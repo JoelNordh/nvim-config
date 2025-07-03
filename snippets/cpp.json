@@ -1,0 +1,137 @@
+{
+  "Google Test TEST_F": {
+    "prefix": "TEST_F",
+    "body": [
+      "TEST_F(${1:FixtureName}, ${2:TestName}) {",
+      "  //Given ",
+      "  //When ",
+      "  //Then ",
+      "  ${0}",
+      "}"
+    ],
+    "description": "Google Test TEST_F (Fixture Test)"
+  },
+  "Google Test TEST": {
+    "prefix": "TEST",
+    "body": [
+      "TEST(${1:TestSuite}, ${2:TestName}) {",
+      "  ${0}",
+      "}"
+    ],
+    "description": "Google Test TEST (Simple Test)"
+  },
+  "Google Test ASSERT_EQ": {
+    "prefix": "ASSERT_EQ",
+    "body": [
+      "ASSERT_EQ(${1:expected}, ${2:actual});${0}"
+    ],
+    "description": "Google Test ASSERT_EQ (Assertion: Equals)"
+  },
+  "Google Test EXPECT_EQ": {
+    "prefix": "EXPECT_EQ",
+    "body": [
+      "EXPECT_EQ(${1:expected}, ${2:actual});${0}"
+    ],
+    "description": "Google Test EXPECT_EQ (Non-fatal Expectation: Equals)"
+  },
+  "Google Test ASSERT_NE": {
+    "prefix": "ASSERT_NE",
+    "body": [
+      "ASSERT_NE(${1:val1}, ${2:val2});${0}"
+    ],
+    "description": "Google Test ASSERT_NE (Assertion: Not Equals)"
+  },
+  "Google Test EXPECT_NE": {
+    "prefix": "EXPECT_NE",
+    "body": [
+      "EXPECT_NE(${1:val1}, ${2:val2});${0}"
+    ],
+    "description": "Google Test EXPECT_NE (Non-fatal Expectation: Not Equals)"
+  },
+  "Google Test ASSERT_TRUE": {
+    "prefix": "ASSERT_TRUE",
+    "body": [
+      "ASSERT_TRUE(${1:condition});${0}"
+    ],
+    "description": "Google Test ASSERT_TRUE (Assertion: True)"
+  },
+  "Google Test EXPECT_TRUE": {
+    "prefix": "EXPECT_TRUE",
+    "body": [
+      "EXPECT_TRUE(${1:condition});${0}"
+    ],
+    "description": "Google Test EXPECT_TRUE (Non-fatal Expectation: True)"
+  },
+  "Google Test ASSERT_FALSE": {
+    "prefix": "ASSERT_FALSE",
+    "body": [
+      "ASSERT_FALSE(${1:condition});${0}"
+    ],
+    "description": "Google Test ASSERT_FALSE (Assertion: False)"
+  },
+  "Google Test EXPECT_FALSE": {
+    "prefix": "EXPECT_FALSE",
+    "body": [
+      "EXPECT_FALSE(${1:condition});${0}"
+    ],
+    "description": "Google Test EXPECT_FALSE (Non-fatal Expectation: False)"
+  },
+  "Google Test SetUpTestCase (static)": {
+    "prefix": "SetUpTestCase",
+    "body": [
+      "static void SetUpTestCase() {",
+      "  ${0}",
+      "}"
+    ],
+    "description": "Google Test SetUpTestCase (static - suite setup)"
+  },
+  "Google Test TearDownTestCase (static)": {
+    "prefix": "TearDownTestCase",
+    "body": [
+      "static void TearDownTestCase() {",
+      "  ${0}",
+      "}"
+    ],
+    "description": "Google Test TearDownTestCase (static - suite teardown)"
+  },
+  "Google Test SetUp (per-test fixture)": {
+    "prefix": "SetUp",
+    "body": [
+      "void SetUp() override {",
+      "  ${0}",
+      "}"
+    ],
+    "description": "Google Test SetUp (per-test setup in fixture)"
+  },
+  "Google Test TearDown (per-test fixture)": {
+    "prefix": "TearDown",
+    "body": [
+      "void TearDown() override {",
+      "  ${0}",
+      "}"
+    ],
+    "description": "Google Test TearDown (per-test teardown in fixture)"
+  },
+  "Ui Command": {
+    "prefix": "MakeCommand",
+     "body": [
+       "SubscribeCommand(\"${1:CommandName}\", [this](const auto&) { ${0} });"
+],
+"description": "Create an omnicode ui command"
+  },
+"Make ui test command": {
+  "prefix": "InvokeCommand",
+"body": [
+  "commandCenterClient->InvokeCommand(ServiceFramework::MakeCommand(\"${1:CommandName}\", {{${2:Argument}}}));"
+]
+},
+  "Subscribe input": {
+    "prefix": "InputIndexed",
+    "body": [
+      "m_inputs.${1:choseInput}.Subscribe().IndexCallback([this](auto index, const auto& ${2:variableName}) {",
+      "${0}",
+      "});"
+    ],
+    "description": "Add an indexed input"
+  } 
+}

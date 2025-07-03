@@ -1,0 +1,17 @@
+{
+"Add Input/output": {
+  "prefix": "addIo",
+  "body": [
+   "\"${1:Name}\": {",
+  "\"description\": \"${2:Description}\",",
+  "\"unit\": \"${3:unit}\",",
+  "\"type\": \"${4:type}\",",
+  "\"kind\": \"${5:indexed}\",",
+  "\"indexType\": \"Tag\",",
+  "\"mandatory\": true",
+  "}${0}"
+  ],
+  "description": "Add either input or output to service json file"
+}
+
+}
