@@ -1,0 +1,2 @@
+
+pcall(require('Comment').setup)
