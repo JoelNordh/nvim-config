@@ -41,6 +41,12 @@ function M.setup()
   Plug('lervag/vimtex')
   Plug('kylechui/nvim-surround')
   Plug('David-Kunz/cmp-npm')
+  Plug('AndrewRadev/linediff.vim')
+  Plug('iamcco/markdown-preview.nvim', { ['do'] = 'cd app && npm install' })
+  Plug('github/copilot.vim')
+  Plug('CopilotC-Nvim/CopilotChat.nvim')
+  Plug('olimorris/codecompanion.nvim')
+
   vim.call('plug#end')
 end
 

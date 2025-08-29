@@ -12,6 +12,9 @@ require("config.keymaps")
 require("config.autocmds")
 require("config.utils")      -- helper functions + user commands
 
+-- My own plugins
+require("service_explorer")
+
 -- Per-plugin config (pcall guarded)
 local function safe(mod) local ok,_=pcall(require,mod); if not ok then return end end
 safe("plugins.colors")
@@ -22,16 +25,20 @@ safe("plugins.autopairs")
 safe("plugins.comment")
 safe("plugins.gitsigns")
 safe("plugins.luasnip")
+safe("plugins.lsp")
 safe("plugins.cmp")
+
+safe("plugins.surround")
 safe("plugins.spectre")
 safe("plugins.telescope")
 safe("plugins.treesitter")
 safe("plugins.project")
 safe("plugins.neogit")
 safe("plugins.whichkey")
+safe("plugins.codecompanion")
 safe("plugins.orgmode")
-safe("plugins.lsp")
 safe("plugins.null-ls")
+safe("plugins.markdownpreview")
 
 
 vim.api.nvim_create_user_command('ReloadConfig', function()

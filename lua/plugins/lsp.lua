@@ -4,7 +4,7 @@ if not ok_lsp then return end
 pcall(require, 'mason')            -- optional, you can add mason.setup() if you use it
 pcall(require, 'mason-lspconfig')  -- optional
 
-vim.lsp.set_log_level("debug")
+vim.lsp.set_log_level("WARN")
 
 local capabilities = require('cmp_nvim_lsp')
   .default_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -27,6 +27,13 @@ lspconfig.jsonls.setup({ capabilities = capabilities })
 -- C/C++
 lspconfig.clangd.setup({
   capabilities = capabilities,
+  cmd = { "clangd",
+    "--background-index",
+    "--clang-tidy",
+    "--header-insertion=never",
+    "--completion-style=detailed",
+    "--query-driver=/usr/bin/arm-none-eabi-*" 
+  },
   filetypes = { "c","cpp","objc","objcpp" },
   root_dir = lspconfig.util.find_git_ancestor,
   init_options = { compilationDatabasePath = vim.fn.getcwd() .. "/x86" },

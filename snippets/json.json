@@ -12,6 +12,21 @@
   "}${0}"
   ],
   "description": "Add either input or output to service json file"
-}
-
+},
+"TimeEntry": 
+  {
+    "prefix": "timeEntry",
+    "body": [
+      "{",
+      "\"type\": \"start\",",
+      "\"time\": \"${1:startTime}\",",
+      "\"endTime\": \"${2:endTime}\",",
+      "\"description\": \"${3:Description}\",",
+      "\"project\": \"${4:sh30}\",",
+      "\"jira\": null,",
+      "\"nonWork\": false",
+    "}"
+    ],
+    "description": "Add a time entry log"
+  }
 }
