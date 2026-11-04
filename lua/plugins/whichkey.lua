@@ -1,2 +1,5 @@
-
-pcall(require('which-key').setup, {})
+return {
+  "folke/which-key.nvim",
+  event = "VeryLazy",
+  opts = {},
+}
