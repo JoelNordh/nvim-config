@@ -1,11 +1,31 @@
+-- nvim-orgmode (replaces the old vimscript jceb/vim-orgmode).
+-- Manages its own treesitter `org` grammar (separate from nvim-treesitter),
+-- installed/updated automatically via the `build` step below.
+local org_dir = vim.fn.expand("~/org")
 
--- vim-orgmode (vimscript plugin) + minimal settings you had
-vim.g.org_todo_keywords = { 'TODO', 'NEXT', 'WAITING', '|', 'DONE', 'CANCELLED' }
-vim.g.org_use_default_key_mappings = 0
-vim.opt.foldmethod = 'syntax'
-vim.opt.foldlevelstart = 99
+return {
+  "nvim-orgmode/orgmode",
+  ft = { "org" },
+  build = ":Org install_treesitter_grammar",
+  dependencies = { "nvim-treesitter/nvim-treesitter" },
+  config = function()
+    vim.fn.mkdir(org_dir, "p")
 
-vim.keymap.set('n', '<leader>ot', ':OrgToggleTodo<CR>', { desc = 'Org: Toggle TODO' })
-vim.keymap.set('n', '<leader>op', ':OrgPromote<CR>', { desc = 'Org: Promote Heading' })
-vim.keymap.set('n', '<leader>od', ':OrgDemote<CR>', { desc = 'Org: Demote Heading' })
-vim.keymap.set('n', '<leader>oi', ':OrgInsertHeadingBelow<CR>', { desc = 'Org: Insert Heading Below' })
+    require("orgmode").setup({
+      org_agenda_files = org_dir .. "/**/*",
+      org_default_notes_file = org_dir .. "/refile.org",
+      org_todo_keywords = { "TODO", "NEXT", "WAITING", "|", "DONE", "CANCELLED" },
+      -- Keep muscle memory from the old vim-orgmode keymaps where they don't
+      -- collide with nvim-orgmode's own (saner) defaults.
+      mappings = {
+        org = {
+          org_todo = "<leader>ot",
+          org_todo_prev = "<leader>oT",
+          org_do_promote = "<leader>op",
+          org_do_demote = "<leader>od",
+          org_insert_heading_respect_content = "<leader>oi",
+        },
+      },
+    })
+  end,
+}
